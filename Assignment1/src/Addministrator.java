@@ -1,2 +1,2 @@
-public class Addministrator {
+public class Administrator {
 }
