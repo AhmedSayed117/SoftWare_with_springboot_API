@@ -1,10 +1,4 @@
 public interface User {
-    String mobile = "";
-    String Username = "";
-    String E_mail = "";
-    String Password = "";
-    userState STATE = userState.ACTIVE;
-
-    public User Login();
-    public void Register();
+    public User Login(User object ,String username,String password);
+    public void Register(User obj);
 }

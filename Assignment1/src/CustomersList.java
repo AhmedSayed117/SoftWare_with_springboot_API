@@ -1,12 +1,19 @@
+import java.util.ArrayList;
+
 public class CustomersList {
-    private CustomersList instanceOFCustomersList;
+    private static CustomersList instanceOFCustomersList = null;
+    ArrayList<Customer> ListOfCustomer = new ArrayList<>();
 
     private CustomersList(){
-        instanceOFCustomersList = new CustomersList();
+
     }
 
-    public CustomersList getInstance(){
-        if(instanceOFCustomersList == null) return instanceOFCustomersList = new CustomersList();
-        else return instanceOFCustomersList;
+    public static CustomersList getInstance(){
+        if(instanceOFCustomersList == null) instanceOFCustomersList = new CustomersList();
+        return instanceOFCustomersList;
     }
+
+//    public String getListOfCustomer() {
+//        return ListOfCustomer.get(0).getUsername() + ListOfCustomer.get(1).getUsername();
+//    }
 }

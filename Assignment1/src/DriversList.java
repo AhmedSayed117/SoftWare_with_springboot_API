@@ -1,5 +1,8 @@
+import java.util.ArrayList;
+
 public class DriversList {
-    private DriversList instanceOFDriversList;
+    private static DriversList instanceOFDriversList;
+    ArrayList<Driver> ListOfDrivers = new ArrayList<>();
 
     private DriversList(){
         instanceOFDriversList = new DriversList();

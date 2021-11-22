@@ -8,19 +8,23 @@ public class Driver implements Idriver {
     private ArrayList<Integer>ratings=new ArrayList<Integer>();
     private ArrayList<User>notification=new ArrayList<User>();
     Offer offer;
+    String mobile = "";
+    String Username = "";
+    String E_mail = "";
+    String Password = "";
 
     @Override
-    public User Login() {
+    public User Login(User object ,String username,String password) {
         return null;
     }
 
     @Override
-    public void Register() {
+    public void Register(User object) {
 
     }
 
     @Override
-    public void Update() {
+    public void Update(String message) {
 
     }
 }

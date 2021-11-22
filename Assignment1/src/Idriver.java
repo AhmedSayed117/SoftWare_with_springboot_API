@@ -1,3 +1,3 @@
 public interface Idriver extends User {
-    public void Update();
+    public void Update(String message);
 }
