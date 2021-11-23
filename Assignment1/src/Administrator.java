@@ -14,7 +14,7 @@ public class Administrator {
     }
 
     public void Blocked(Driver obj){
-        obj.setState(userState.BLOCkED);
+        obj.setState(userState.BLOCKED);
     }
 
 }
