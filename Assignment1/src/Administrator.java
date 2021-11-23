@@ -1,14 +1,20 @@
 public class Administrator {
-    private Administrator instanceOFAdministrator;
-
+    private static Administrator instanceOFAdministrator = null;
     private Administrator(){
-        instanceOFAdministrator = new Administrator();
+
     }
 
-    public Administrator getInstance(){
+    public static Administrator getInstance(){
         if(instanceOFAdministrator == null) return instanceOFAdministrator = new Administrator();
         else return instanceOFAdministrator;
     }
 
+    public void Approve(Driver obj){
+        obj.setState(userState.ACTIVE);
+    }
+
+    public void Blocked(Driver obj){
+        obj.setState(userState.BLOCkED);
+    }
 
 }

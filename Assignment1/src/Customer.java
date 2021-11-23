@@ -32,14 +32,22 @@ public class Customer implements Icustomer {
 
     @Override
     public User Login(User object ,String username,String password) {
-        Customer obj = (Customer) object;
-        return Registration.SignIn(obj,username,password);//null -> User Object
+        Customer c = new Customer();
+        for (Customer customer : CustomersList.getInstance().ListOfCustomer){
+            if ( ( customer.getUsername().equals(username) ) && ( customer.getPassword().equals(password) ) && customer == object){
+                c = customer;
+                System.out.println(c.getUsername());
+                System.out.println(c.getPassword());
+                return c;
+            }else c = null;
+        }
+        return c;
     }
 
     @Override
     public void Register(User object) {
         Customer obj = (Customer) object;
-        Registration.SignUp(obj);
+        CustomersList.getInstance().ListOfCustomer.add(obj);
     }
 
 

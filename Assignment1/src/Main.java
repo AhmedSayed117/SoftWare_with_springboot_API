@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String []args){
         CustomersList obj = CustomersList.getInstance();
+        Administrator admin = Administrator.getInstance();
 
         Customer customer = new Customer();
         customer.setUsername("Ahmed");
@@ -16,22 +17,25 @@ public class Main {
         customer1.setPassword("1722");
         customer1.setE_mail("Ahmed@gmail.com");
 
-        Customer customer2 = new Customer();
-        customer2.setUsername("Zeyad");
-        customer2.setMobile("01125372118");
-        customer2.setCustomer_rate(5);
-        customer2.setPassword("1722");
-        customer2.setE_mail("Ahmed@gmail.com");
+        Registration.SignUp(customer1);
+        Registration.SignUp(customer);
 
-        customer.Register(customer);
-        customer1.Register(customer1);
-        customer2.Register(customer2);
-        //1-
-        //2-login
+        Driver D = new Driver();
+        D.setUsername("Zeyad");
+        D.setMobile("01125372118");
+        D.setPassword("1722");
+        D.setE_mail("Ahmed@gmail.com");
 
+//        Registration.SignIn(customer1,"Zeyad","1722");
+        Registration.SignUp(D);
+        Registration.SignIn(D,"Zeyad","1722");
 
-
-         Registration.SignIn(customer1,"Ahmed","1762");
+        admin.Approve(D);
+        Registration.SignIn(D,"Zeyad","1722");
+        admin.Blocked(D);
+        Registration.SignIn(D,"Zeyad","1722");
+        admin.Approve(D);
+        Registration.SignIn(D,"Zeyad","1722");
 
 //        System.out.println(obj.getListOfCustomer());
 
