@@ -4,7 +4,6 @@ public class DriversList {
     private static DriversList instanceOFDriversList =null;
     ArrayList<Driver> ListOfDrivers = new ArrayList<>();
 
-
     private DriversList(){
 
     }

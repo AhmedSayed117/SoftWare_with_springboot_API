@@ -13,7 +13,7 @@ public class CustomersList {
         return instanceOFCustomersList;
     }
 
-//    public String getListOfCustomer() {
+    //    public String getListOfCustomer() {
 //        return ListOfCustomer.get(0).getUsername() + ListOfCustomer.get(1).getUsername();
 //    }
 }

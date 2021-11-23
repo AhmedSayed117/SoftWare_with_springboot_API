@@ -10,16 +10,22 @@ public class Customer implements Icustomer {
     private String Password ;
     private userState STATE = userState.ACTIVE;
 
-    ArrayList<Idriver>Drivers =new ArrayList<>();
+    ArrayList<Driver> Drivers =new ArrayList<>();
 
+
+    Customer(){
+        setDrivers(DriversList.getInstance().ListOfDrivers);
+    }
 
     @Override
-    public void subscribe(Idriver obj) {
+    public void subscribe(Idriver object) {
+        Driver obj = (Driver) object;
         Drivers.add(obj);
     }
 
     @Override
-    public void unsubscribe(Idriver obj) {
+    public void unsubscribe(Idriver object) {
+        Driver obj = (Driver) object;
         Drivers.remove(obj);
     }
 
@@ -55,8 +61,10 @@ public class Customer implements Icustomer {
         E_mail = e_mail;
     }
 
-    public void setDrivers(ArrayList<Idriver> drivers) {
-        Drivers = drivers;
+    public void setDrivers(ArrayList<Driver> drivers) {
+        for (int i =0;i<drivers.size();i++){
+            if (drivers.get(i).getState()==userState.ACTIVE) subscribe(drivers.get(i));
+        }
     }
 
     public void setMobile(String mobile) {
@@ -110,5 +118,7 @@ public class Customer implements Icustomer {
         return request;
     }
 
-
+    public ArrayList<Driver> getDrivers() {
+        return Drivers;
+    }
 }

@@ -3,6 +3,36 @@ public class Main {
         CustomersList obj = CustomersList.getInstance();
         Administrator admin = Administrator.getInstance();
 
+
+        Driver D = new Driver();
+        D.setUsername("Driver1");
+        D.setMobile("01125372118");
+        D.setPassword("1722");
+        D.setE_mail("Ahmed@gmail.com");
+
+        Driver D2 = new Driver();
+        D2.setUsername("Driver2");
+        D2.setMobile("01125372118");
+        D2.setPassword("1722");
+        D2.setE_mail("Ahmed@gmail.com");
+
+        Driver D3 = new Driver();
+        D3.setUsername("Driver3");
+        D3.setMobile("01125372118");
+        D3.setPassword("1722");
+        D3.setE_mail("Ahmed@gmail.com");
+
+        Registration.SignUp(D);
+        Registration.SignUp(D2);
+        Registration.SignUp(D3);
+
+
+        admin.Approve(D2);
+        admin.Approve(D3);
+        admin.Approve(D);
+
+
+
         Customer customer = new Customer();
         customer.setUsername("Ahmed");
         customer.setMobile("01125372118");
@@ -17,27 +47,9 @@ public class Main {
         customer1.setPassword("1722");
         customer1.setE_mail("Ahmed@gmail.com");
 
-        Registration.SignUp(customer1);
-        Registration.SignUp(customer);
 
-        Driver D = new Driver();
-        D.setUsername("Zeyad");
-        D.setMobile("01125372118");
-        D.setPassword("1722");
-        D.setE_mail("Ahmed@gmail.com");
+        System.out.println(customer1.getDrivers());
 
-//        Registration.SignIn(customer1,"Zeyad","1722");
-        Registration.SignUp(D);
-        Registration.SignIn(D,"Zeyad","1722");
-
-        admin.Approve(D);
-        Registration.SignIn(D,"Zeyad","1722");
-        admin.Blocked(D);
-        Registration.SignIn(D,"Zeyad","1722");
-        admin.Approve(D);
-        Registration.SignIn(D,"Zeyad","1722");
-
-//        System.out.println(obj.getListOfCustomer());
 
     }
 }
