@@ -13,9 +13,9 @@ public class Customer implements Icustomer {
     ArrayList<Driver> Drivers =new ArrayList<>();
 
 
-    Customer(){
-        setDrivers(DriversList.getInstance().ListOfDrivers);
-    }
+//    Customer(){
+//        setDrivers(DriversList.getInstance().ListOfDrivers);
+//    }
 
     @Override
     public void subscribe(Idriver object) {
@@ -52,8 +52,10 @@ public class Customer implements Icustomer {
 
     @Override
     public void Register(User object) {
+
         Customer obj = (Customer) object;
         CustomersList.getInstance().ListOfCustomer.add(obj);
+        setDrivers(DriversList.getInstance().ListOfDrivers);
     }
 
 

@@ -1,5 +1,3 @@
 public enum userState {
-    ACTIVE,
-    PENDING,
-    BLOCKED
+    ACTIVE , PENDING , BLOCkED
 }

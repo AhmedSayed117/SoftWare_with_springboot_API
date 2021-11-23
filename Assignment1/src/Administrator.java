@@ -11,10 +11,14 @@ public class Administrator {
 
     public void Approve(Driver obj){
         obj.setState(userState.ACTIVE);
+        for (int i=0;i<CustomersList.getInstance().ListOfCustomer.size();i++)
+        {
+            CustomersList.getInstance().ListOfCustomer.get(i).subscribe(obj);
+        }
     }
 
     public void Blocked(Driver obj){
-        obj.setState(userState.BLOCKED);
+        obj.setState(userState.BLOCkED);
     }
 
 }
