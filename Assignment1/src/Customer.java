@@ -10,28 +10,32 @@ public class Customer implements Icustomer {
     private String Password ;
     private userState STATE = userState.ACTIVE;
 
-    ArrayList<Driver> Drivers =new ArrayList<>();
+    ArrayList<Driver> Drivers = DriversList.getInstance().ListOfDrivers;
+    ArrayList<Idriver> ObserverList = new ArrayList<>();
 
-
-//    Customer(){
-//        setDrivers(DriversList.getInstance().ListOfDrivers);
-//    }
+    public Customer(){
+        ObserverList = new ArrayList<>();
+    }
 
     @Override
     public void subscribe(Idriver object) {
         Driver obj = (Driver) object;
         Drivers.add(obj);
+
+        ObserverList.add(object);
     }
 
     @Override
     public void unsubscribe(Idriver object) {
         Driver obj = (Driver) object;
         Drivers.remove(obj);
+
+        ObserverList.remove(ObserverList.indexOf(object));
     }
 
     @Override
     public void Notify(String message) {
-        for(Idriver obj: Drivers) {
+        for(Idriver obj: ObserverList) {
             obj.Update(message);
         }
     }
@@ -40,7 +44,7 @@ public class Customer implements Icustomer {
     public User Login(User object ,String username,String password) {
         Customer c = new Customer();
         for (Customer customer : CustomersList.getInstance().ListOfCustomer){
-            if ( ( customer.getUsername().equals(username) ) && ( customer.getPassword().equals(password) ) && customer == object){
+            if ( ( customer.getUsername().equals(username) ) && ( customer.getPassword().equals(password) )  && (customer.getSTATE()==userState.ACTIVE)){
                 c = customer;
                 System.out.println(c.getUsername());
                 System.out.println(c.getPassword());
@@ -52,10 +56,15 @@ public class Customer implements Icustomer {
 
     @Override
     public void Register(User object) {
-
         Customer obj = (Customer) object;
-        CustomersList.getInstance().ListOfCustomer.add(obj);
-        setDrivers(DriversList.getInstance().ListOfDrivers);
+        for (int i=0;i<CustomersList.getInstance().ListOfCustomer.size();i++){
+            if(CustomersList.getInstance().ListOfCustomer.get(i).getUsername().equals(obj.getUsername())){
+                System.out.println("username already exists");
+                return;
+            }
+        }
+            CustomersList.getInstance().ListOfCustomer.add(obj);
+//            setDrivers(DriversList.getInstance().ListOfDrivers);
     }
 
 
@@ -63,11 +72,11 @@ public class Customer implements Icustomer {
         E_mail = e_mail;
     }
 
-    public void setDrivers(ArrayList<Driver> drivers) {
-        for (int i =0;i<drivers.size();i++){
-            if (drivers.get(i).getState()==userState.ACTIVE) subscribe(drivers.get(i));
-        }
-    }
+//    public void setDrivers(ArrayList<Driver> drivers) {
+//        for (int i =0;i<drivers.size();i++){
+//            if (drivers.get(i).getState()==userState.ACTIVE) subscribe(drivers.get(i));
+//        }
+//    }
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
@@ -96,6 +105,11 @@ public class Customer implements Icustomer {
         return E_mail;
     }
 
+    @Override
+    public userState getState() {
+        return null;
+    }
+
     public String getMobile() {
         return mobile;
     }
@@ -122,5 +136,13 @@ public class Customer implements Icustomer {
 
     public ArrayList<Driver> getDrivers() {
         return Drivers;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                ", Username='" + Username + '\'' +
+                ", Password='" + Password + '\'' +
+                '}';
     }
 }

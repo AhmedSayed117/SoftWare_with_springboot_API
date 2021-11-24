@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Driver implements Idriver {
+public class Driver implements Idriver{
     userState state = userState.PENDING;
     private String license;
     private String national_id;
@@ -30,52 +30,85 @@ public class Driver implements Idriver {
     @Override
     public void Register(User object) {
         Driver obj = (Driver) object;
-        DriversList.getInstance().ListOfDrivers.add(obj);
+        for (int i=0;i<DriversList.getInstance().ListOfDrivers.size();i++){
+            if(DriversList.getInstance().ListOfDrivers.get(i).getUsername().equals(obj.getUsername())){
+                System.out.println("username already exists");
+                return;
+            }
+        }
+            DriversList.getInstance().ListOfDrivers.add(obj);
     }
 
     @Override
     public void Update(String message) {
-
-    }
-
-    public void setUsername(String username) {
-        Username = username;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public void setE_mail(String e_mail) {
-        E_mail = e_mail;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public String getUsername() {
-        return Username;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public String getE_mail() {
-        return E_mail;
-    }
-
-    public userState getState() {
-        return state;
+        System.out.println(message);
     }
 
     public void setState(userState state) {
         this.state = state;
     }
 
+    @Override
+    public userState getState() {
+        return state;
+    }
+
+    @Override
+    public String getMobile() {
+        return mobile;
+    }
+
+    @Override
+    public String getE_mail() {
+        return E_mail;
+    }
+
+    @Override
+    public String getUsername() {
+        return Username;
+    }
+
+    @Override
+    public String getPassword() {
+        return Password;
+    }
+
+    @Override
+    public void setE_mail(String e_mail) {
+        E_mail = e_mail;
+    }
+
+    @Override
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    @Override
+    public void setUsername(String username) {
+        Username = username;
+    }
+
+    @Override
+    public void setSTATE(userState STATE) {
+        STATE = userState.PENDING;
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "state=" + state +
+                ", Username='" + Username + '\'' +
+                ", Password='" + Password + '\'' +
+                '}';
+    }
+    void display(){
+        for (int i=0;i<DriversList.getInstance().ListOfDrivers.size();i++){
+            System.out.println(DriversList.getInstance().ListOfDrivers.get(i));
+        }
+    }
 }
