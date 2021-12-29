@@ -153,7 +153,9 @@ public class Customer implements Icustomer {
         for (int i=0;i<DriversList.getInstance().ListOfDrivers.size();i++){
             DriversList.getInstance().ListOfDrivers.get(i).getNotification().remove(this);
         }
-        this.request.getOfferList().removeAll(this.request.getOfferList());
+        // this.request.ride.setprice(object.getPrice());
+       this.request.getOfferList().removeAll(this.request.getOfferList());
+
     }
 
 
