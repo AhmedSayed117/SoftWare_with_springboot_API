@@ -3,8 +3,11 @@ import Control.DataBase.Events;
 import User.User;
 import User.userState;
 
+import java.util.ArrayList;
+
 public class Administrator {
     private Events events=Events.getInstance();
+    ArrayList<String>discount_areas=new ArrayList<>();
     private static Administrator instanceOFAdministrator = null;
     private Administrator(){
 
@@ -29,4 +32,11 @@ public class Administrator {
 
     }
 
+    public void setDiscount_areas(String str) {
+        this.discount_areas.add(str);
+    }
+
+    public ArrayList<String> getDiscount_areas() {
+        return discount_areas;
+    }
 }

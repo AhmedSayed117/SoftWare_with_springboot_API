@@ -1,5 +1,6 @@
 package User.Customer;
 
+import Control.Administrator;
 import Control.DataBase.CustomersList;
 import Control.DataBase.DriversList;
 import Control.DataBase.Events;
@@ -179,8 +180,8 @@ public class Customer implements Icustomer {
     }
 
     public void SelectOffer(Offer object){
-        object.getDriverObj().setRstate(DriverState.BUSY);
-
+        object.getDriverObj().setDriverState(DriverState.BUSY);
+//numofpass
         for (int i=0;i<DriversList.getInstance().ListOfDrivers.size();i++){
             DriversList.getInstance().ListOfDrivers.get(i).getNotification().remove(this);
         }
@@ -201,6 +202,7 @@ public class Customer implements Icustomer {
 
         this.request.getOfferList().removeAll(this.request.getOfferList());
 //        this.request.ride.setprice(object.getPrice());
+        this.trip_count++;
     }
 
 
@@ -217,10 +219,14 @@ public class Customer implements Icustomer {
         if (request.getPassenger_num() >= 2) {
             s = new TwoPassengersDiscount(s);
         }
-        /*if ( ){}
-        if ( ){}
-        if ( ){}
-         */
+        //if (publicholiday ){}
+        if (Administrator.getInstance().getDiscount_areas().contains(ride.getDestination())){
+            s=new AdminDiscount(s);
+
+
+        }
+       // if ( birthday){}
+         //
         return s.calcCost();
     }
 

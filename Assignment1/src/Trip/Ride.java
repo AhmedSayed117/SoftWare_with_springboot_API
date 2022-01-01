@@ -77,7 +77,7 @@ public class Ride implements Service{
             String str="Captain Arrived to User Location, 00:00, Driver: "+getDriver().getUsername()+" , Customer: " +getCustomer().getUsername();
             Events.getInstance().addEvent(getCustomer().getRequest(),str);
         }
-        
+
     }
 
     public void isFinished() {

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Driver implements Idriver{
     userState state = userState.PENDING;
-    DriverState Rstate = DriverState.FREE;
+    DriverState driver_state = DriverState.FREE;
 
 
     private ArrayList<String>fav_area=new ArrayList<String>();
@@ -102,8 +102,10 @@ public class Driver implements Idriver{
     @Override
     public void Update(User object) {
         Customer obj = (Customer) object;
+        if(getDriverState().equals(DriverState.FREE)){
         if(fav_area.indexOf(obj.getRequest().getSource())!=-1){
             if (!notification.contains(obj)) notification.add(obj);
+        }
         }
     }
 
@@ -182,12 +184,12 @@ public class Driver implements Idriver{
                 '}';
     }
 
-    public DriverState getRstate() {
-        return Rstate;
+    public DriverState getDriverState() {
+        return driver_state;
     }
 
-    public void setRstate(DriverState rstate) {
-        Rstate = rstate;
+    public void setDriverState(DriverState rstate) {
+        driver_state = rstate;
     }
 
     void display(){

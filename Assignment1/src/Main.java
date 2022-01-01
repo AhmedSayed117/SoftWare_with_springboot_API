@@ -37,12 +37,12 @@ public class Main {
 
                         while (true){
 
-                            System.out.println("1-Drivers\n2-Customers\n3-LogOut");
+                            System.out.println("1-Drivers\n2-Customers\n3-Add Areas\n4-View Log\n5-LogOut");
                             char choose1 = input.next().charAt(0);
 
                             if (choose1 == '1') {
                                 for (int i=0;i<ListDrivers.ListOfDrivers.size();i++){
-                                    System.out.println( (i+1) +"- "+ListDrivers.ListOfDrivers.get(i).getUsername() + " & his State is " +ListDrivers.ListOfDrivers.get(i).getSTATE());
+ /*to put here*/                                   System.out.println( (i+1) +"- "+ListDrivers.ListOfDrivers.get(i).getUsername() + " & his State is " +ListDrivers.ListOfDrivers.get(i).getSTATE());
                                 }
                                 System.out.println("1-Approve\n2-Block\n3-Exit");
                                 char choose2 = input.next().charAt(0);
@@ -74,7 +74,23 @@ public class Main {
 
                                 }else System.out.println("invalid Numbers");
 
-                            }else if (choose1 == '3') break;
+                            }
+                            else if(choose1=='3'){
+                                System.out.println("Enter area you want to apply discount on");
+                                String str=input.next();
+                                Administrator.getInstance().setDiscount_areas(str);
+
+
+                            }
+                            else if(choose1=='4'){
+
+                                Administrator.getInstance().viewLog();
+
+
+                            }
+
+
+                            else if (choose1 == '5') break;
                             else
                                 System.out.println("invalid Numbers");
                         }
@@ -139,7 +155,7 @@ public class Main {
                                 while (true){
 
 
-                                    System.out.println("1-List All Notifications\n2-List Favourite Area\n3-List Of All Ratings\n4-AddArea\n5-LogOut");
+                                    System.out.println("1-List All Notifications\n2-List Favourite Area\n3-List Of All Ratings\n4-AddArea\n5-Set Current Location \n6-LogOut");
                                     char choose2 = input.next().charAt(0);
                                     if(choose2=='1'){
                                         if (driver.getNotification().size()==0){
@@ -178,6 +194,11 @@ public class Main {
                                         driver.addArea(Area);
                                     }
                                     else if(choose2=='5'){
+                                        System.out.println("Where are you now?");
+                                        String str=input.next();
+                                        driver.setCurrent_location(str);
+                                    }
+                                    else if(choose2=='6'){
                                         break;
                                     }
                                     else
@@ -294,6 +315,7 @@ public class Main {
                                             int number = input.nextInt();
                                             number--;
                                             customer.SelectOffer(customer.getRequest().getOfferList().get(number));
+                                            System.out.println("Driver on way and the cost of the ride is "+ customer.getRequest().getRide().calcCost());
                                         }
                                     }
                                     else if(choose2=='5'){

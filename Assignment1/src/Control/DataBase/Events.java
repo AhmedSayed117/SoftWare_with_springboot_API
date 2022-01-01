@@ -47,7 +47,7 @@ public class Events {
     }
    public Request selectEvent(){
 
-       System.out.println("select ride from following by Id of the ride");
+       System.out.println("select ride from following by Entering Id of the ride");
        int i=1;
     for (Map.Entry<Request,ArrayList<String>> entry : history.entrySet())
     {
@@ -66,6 +66,7 @@ public class Events {
           }
 
        }
+       System.out.println("wrong Ride Id");
 return null;
     }
 
