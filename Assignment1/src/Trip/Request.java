@@ -8,6 +8,14 @@ public class Request {
     private ArrayList<Offer> OfferList = new ArrayList<>();
     private Ride ride ;
     private int passenger_num;
+    private int request_id;
+    public static int id=1230;
+
+   public Request(){ request_id=id; id++;}
+
+    public int getRequestId() {
+        return request_id;
+    }
 
     public void setPassenger_num(int passenger_num) {
         this.passenger_num = passenger_num;

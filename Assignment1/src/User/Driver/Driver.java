@@ -1,7 +1,9 @@
 package User.Driver;
 
+import Control.Administrator;
 import Control.DataBase.CustomersList;
 import Control.DataBase.DriversList;
+import Control.DataBase.Events;
 import Trip.Offer;
 import User.Customer.Customer;
 import User.User;
@@ -30,6 +32,10 @@ public class Driver implements Idriver{
     private String Username ;
     private String E_mail ;
     private String Password ;
+
+    public void setCurrent_location(String current_location) {
+        this.current_location = current_location;
+    }
 
     public void setRatings(ArrayList<String> ratings) {
         this.ratings = ratings;
@@ -208,6 +214,10 @@ public class Driver implements Idriver{
         object.getRequest().getOfferList().add(offer);
         // to check discount here
         // object.getRwe
+         // adarraylist.add("Driver"+this.name+"")
+        String str="Offer Added, 00:00, C "+this.getUsername()+" , "+price+"$";
+        Events.getInstance().addEvent(object.getRequest(),str);
+        offer=null;
     }
 
     public ArrayList<String> getFav_area() {

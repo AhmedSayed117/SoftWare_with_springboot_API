@@ -1,5 +1,6 @@
 package Trip;
 
+import Control.DataBase.Events;
 import User.Customer.Customer;
 import User.Driver.Driver;
 
@@ -69,4 +70,26 @@ public class Ride implements Service{
     public double calcCost() {
         return cost;
     }
+
+    public void checkArriving(){
+        if (getDriver().getCurrent_location().equals(getSource())){
+            setRideState(RideState.STARTED);
+            String str="Captain Arrived to User Location, 00:00, Driver: "+getDriver().getUsername()+" , Customer: " +getCustomer().getUsername();
+            Events.getInstance().addEvent(getCustomer().getRequest(),str);
+        }
+        
+    }
+
+    public void isFinished() {
+        if (getDriver().getCurrent_location().equals(getDestination())) {
+            setRideState(RideState.FINISHED);
+            String str = "Captain Arrived to User Destination, 00:00, Driver: " + getDriver().getUsername() + " , Customer: " + getCustomer().getUsername();
+            Events.getInstance().addEvent(getCustomer().getRequest(), str);
+
+
+        }
+
+    }
+
+
 }

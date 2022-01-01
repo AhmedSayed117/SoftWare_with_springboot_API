@@ -2,6 +2,7 @@ package User.Customer;
 
 import Control.DataBase.CustomersList;
 import Control.DataBase.DriversList;
+import Control.DataBase.Events;
 import Trip.*;
 import User.Driver.*;
 import User.*;
@@ -195,6 +196,8 @@ public class Customer implements Icustomer {
         r.setCost(checkDiscount(r));
 
         request.setRide(r);
+        String str="Offer Accepted, 00:00, C "+this.getUsername();
+        Events.getInstance().addEvent(request,str);
 
         this.request.getOfferList().removeAll(this.request.getOfferList());
 //        this.request.ride.setprice(object.getPrice());
